@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quiz</title>
+</head>
+<body>
+  <h1>Quiz</h1>
+  <form action="/submit-quiz" method="POST">
+    <% questions.forEach(question => { %>
+      <div>
+        <p><%= question.question %></p>
+        <% question.options.forEach(option => { %>
+          <button type="submit" name="answer" value="<%= option %>"><%= option %></button>
+        <% }); %>
+        <hr> <!-- Optional: Add a separator between questions -->
+      </div>
+    <% }); %>
+  </form>
+</body>
+</html>

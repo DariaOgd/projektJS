@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuizApp</title>
-    <link rel="stylesheet" href="../public/css/home.css">
+    <link rel="stylesheet" href="/css/home.css">
     <script src="https://kit.fontawesome.com/20500f701e.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
         <div class="top">
-            <div class="start-quiz">
-                <button>Rozpocznij quiz</button>
+            <div class="quizstart">
+                
+                <a href="/quiz">Rozpocznij quiz</a>
+
             </div>
 
             <form action="/add" method="POST">
@@ -24,9 +26,10 @@
                         <label for="definition" class="def">Definicja</label>
                         <input type="text" name="definition">
                     </div>
+                    <button type="submit">Dodaj</button>
     
                 </div>
-                <button type="submit">Dodaj</button>
+                
 
             </form>
 
@@ -36,10 +39,25 @@
 
             <% concepts.forEach(concept => { %>
                 <div class="card">
-                    <p>Concept: <%= concept.concept %></p>
-                    <p>Definition: <%= concept.definition %></p>
-                    <a href="/edit/<%= concept._id %>"><i class="fas fa-pen"></i></a>
+                    <div class="left">
+                        <div class="concept">
+                            <p>Pojęcie: </p>
+                            <h3 class="concept"><%= concept.concept %></h3>
+                        </div>
+                        <div class="def">
+                            <p>Definicja: </p>
+                            <h3> <%= concept.definition %></h3>
+                        </div>
+
+                    </div>
+                    
+                    
+                    <div class="icons">
+                        <a href="/edit/<%= concept._id %>"><i class="fas fa-pen"></i></a>
                     <a href="/delete/<%= concept._id %>"><i class="fas fa-trash"></i></a>
+
+                    </div>
+                    
 
                 </div>
 

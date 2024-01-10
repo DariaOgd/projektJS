@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mukta&family=Oxygen&display=swap");
+* {
+  font-family: "Inter", sans-serif;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+}
+.container .top {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.container .top form {
+  padding-top: 30px;
+  width: 100%;
+  display: flex;
+  gap: 30px;
+}
+.container .top form button {
+  border-style: none;
+  margin-right: 20px;
+  width: 20%;
+  background-color: rgba(128, 128, 128, 0.271);
+}
+.container .top form button:hover {
+  cursor: pointer;
+}
+.container .top form .fields {
+  display: flex;
+  gap: 20px;
+  width: 75%;
+}
+.container .top form .fields button {
+  width: 10%;
+}
+.container .top form .fields .field1, .container .top form .fields .field2 {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.container .top form .fields .field1 .label, .container .top form .fields .field2 .label {
+  padding-bottom: 30px;
+}
+.container .top form .fields .field1 input, .container .top form .fields .field2 input {
+  border-style: none;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}/*# sourceMappingURL=edit.css.map */

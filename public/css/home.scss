@@ -1,4 +1,120 @@
-@import url('https://fonts.googleapis.com/css2?family=Mukta&family=Oxygen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Mukta&family=Oxygen&display=swap');
 *{
-    background-color: green
+
+    font-family: 'Inter', sans-serif;
+   
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+
+
+}
+body{
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    .top{
+        width: 100%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        
+        .quizstart{
+            button{
+                padding: 20px;
+                border: none;
+                cursor: pointer;
+                color: white;
+                background-color: rgb(229, 100, 122);
+                &:hover{
+                    background-color: rgb(215, 64, 89);
+                }
+            }
+           
+        }
+
+
+        form{
+            padding-top: 30px;
+            display: flex;
+            button{
+                border-style: none;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .fields{
+                display: flex;
+                gap: 20px;
+                width: 100%;
+                button{
+                    width: 10%;
+                }
+                
+
+                .field1, .field2{
+                    display: flex;
+                    width: 41%;
+                    flex-direction: column;
+                    .label{
+                        padding-bottom: 30px;
+                       
+                    }
+                    input{
+                        border-style: none;
+                        padding: 10px;
+                        border-bottom: 1px solid black;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .questions{
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        padding: 10px;
+        
+        .card{
+            
+            padding: 20px;
+            display: flex;
+            gap: 5rem;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid gray;
+            .icons{
+                display: flex;
+                gap: 20px;
+                justify-content: space-around;
+                .fa-pen{
+                    color: rgb(112, 155, 112);
+                }
+                .fa-trash{
+                    color: rgb(190, 101, 101);
+                }
+            }
+            .left{
+                width: 70%;
+                justify-content: space-between;
+                display: flex;
+                p{
+                    color: gray;
+                    font-weight: bolder;
+                    font-size: small;
+                }
+                
+
+            }
+            
+            
+            
+        }
+    }
+
 }

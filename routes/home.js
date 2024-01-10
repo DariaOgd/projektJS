@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Concept = require('../models/Concept');
 
+
 router.get('/', async (req, res) => {
     try {
         const concepts = await Concept.find({}); // Fetch all concepts from the database
@@ -75,6 +76,8 @@ router.get("/delete/:id", async (req, res) => {
         res.send("Error deleting concept");
     }
 });
+
+
 
 
 module.exports = router;
