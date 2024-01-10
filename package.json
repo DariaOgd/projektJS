@@ -1,0 +1,25 @@
+{
+  "name": "quizapp",
+  "version": "1.0.0",
+  "description": "crud for adding questions and quiz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DariaOgd/projektJS.git"
+  },
+  "author": "Daria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DariaOgd/projektJS/issues"
+  },
+  "homepage": "https://github.com/DariaOgd/projektJS#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.4"
+  }
+}

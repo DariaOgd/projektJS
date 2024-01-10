@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuizApp</title>
+    <link rel="stylesheet" href="../public/css/home.css">
+    <script src="https://kit.fontawesome.com/20500f701e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="start-quiz">
+                <button>Rozpocznij quiz</button>
+            </div>
+
+            <form action="/add" method="POST">
+                <div class="fields">
+                    <div class="field1">
+                        <label for="concept" class="concept">Pojęcie:</label>
+                        <input type="text" name="concept">
+                    </div>
+                    <div class="field2">
+                        <label for="definition" class="def">Definicja</label>
+                        <input type="text" name="definition">
+                    </div>
+    
+                </div>
+                <button type="submit">Dodaj</button>
+
+            </form>
+
+
+        </div>
+        <div class="questions">
+
+            <% concepts.forEach(concept => { %>
+                <div class="card">
+                    <p>Concept: <%= concept.concept %></p>
+                    <p>Definition: <%= concept.definition %></p>
+                    <a href="/edit/<%= concept._id %>"><i class="fas fa-pen"></i></a>
+                    <a href="/delete/<%= concept._id %>"><i class="fas fa-trash"></i></a>
+
+                </div>
+
+            <% }); %>
+
+        </div>
+    </div>
+    
+</body>
+</html>
