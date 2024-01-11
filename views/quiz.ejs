@@ -1,20 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Quiz</title>
+    <!-- Your head content... -->
+    <title>Quiz</title>
+    <script>
+        let currentQuestionIndex = 0;
+        let questions = [];
+
+        const fetchQuestions = async () => {
+            try {
+                const response = await fetch('/api/fetchQuestions');
+                const questions = await response.json();
+
+                // Ensure questions is an array
+                const questionsArray = Array.isArray(questions) ? questions : [questions];
+
+                return questionsArray;
+            } catch (err) {
+                console.error('Error fetching questions:', err);
+                return [];
+            }
+        };
+
+        const displayQuestion = () => {
+            const fetchedQuestions = questions;
+            if (fetchedQuestions.length > 0 && currentQuestionIndex < fetchedQuestions.length) {
+                const quizContainer = document.getElementById('quiz-container');
+                const question = fetchedQuestions[currentQuestionIndex];
+
+                // Generate HTML for question, answer, and choices
+                const questionHTML = `<p>Question: ${question.question}</p>`;
+                const answerHTML = `<p>Answer: ${question.answer}</p>`;
+                const choicesHTML = `<p>Choice 1: ${question.choice1}</p><p>Choice 2: ${question.choice2}</p>`;
+
+                quizContainer.innerHTML = `${questionHTML}${answerHTML}${choicesHTML}`;
+                currentQuestionIndex++;
+            } else {
+                console.log('No questions available or index out of bounds.');
+                // Navigate back to the main route
+                window.location.href = '/';
+            }
+        };
+
+        const nextQuestion = async () => {
+            try {
+                const fetchedQuestions = await fetchQuestions();
+                questions = fetchedQuestions;
+                console.log('questions:', questions);
+                displayQuestion();
+            } catch (error) {
+                console.error('Error in nextQuestion:', error);
+            }
+        };
+
+        // Initial call to fetch and display the first question
+        nextQuestion();
+    </script>
 </head>
 <body>
-  <h1>Quiz</h1>
-  <form action="/submit-quiz" method="POST">
-    <% questions.forEach(question => { %>
-      <div>
-        <p><%= question.question %></p>
-        <% question.options.forEach(option => { %>
-          <button type="submit" name="answer" value="<%= option %>"><%= option %></button>
-        <% }); %>
-        <hr> <!-- Optional: Add a separator between questions -->
-      </div>
-    <% }); %>
-  </form>
+    <div id="quiz-container"></div>
+    <button onclick="nextQuestion()">Next Question</button>
 </body>
 </html>

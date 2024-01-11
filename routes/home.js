@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 const Concept = require('../models/Concept');
+
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
 
 
 router.get('/', async (req, res) => {

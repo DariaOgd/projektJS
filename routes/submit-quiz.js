@@ -1,33 +1,27 @@
-// Assuming you have a Concept model for questions and answers
-const Concept = require('../models/Concept');
+const express = require('express');
+const router = express.Router();
 
-// Route to handle quiz submissions
-router.post('/submit-quiz', async (req, res) => {
-  try {
-    // Assuming 'selectedAnswer' contains the user's chosen answer
-    const selectedAnswer = req.body.answer;
+// Assuming you have a function to fetch questions
+// const { fetchQuestions } = require('../controllers/quizManager');
+// const questions = fetchQuestions(); // Fetch questions once
+// let currentQuestionIndex = 0; // Initialize the index of the current question
 
-    // Fetch the correct answer for the current question from the database
-    const currentQuestion = await Concept.findOne({ _id: currentQuestionId });
+// const getNextQuestion = () => {
+//   if (currentQuestionIndex < questions.length - 1) {
+//     // If there are more questions, increment the index and return the next question
+//     currentQuestionIndex++;
+//     return questions[currentQuestionIndex];
+//   } else {
+//     // If there are no more questions, return null or handle the end of the quiz
+//     return null;
+//   }
+// };
 
+router.post('/test', (req, res) => {
+  console.log('Received POST request at /submit-quiz');
+  console.log('Request Body:', req.body);
 
-    // Compare the selected answer with the correct answer
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-      // Handle correct answer logic
-      // Increase score or any other actions
-
-      // Fetch the next question from the database
-      const nextQuestion = await Concept.findOne({ orderField: { $gt: currentQuestion.orderField } }).sort({ orderField: 1 }).limit(1);
-
-
-      // Render the next question
-      res.render('quiz', { question: nextQuestion }); // Assuming 'quiz.ejs' is your EJS file for the quiz view
-    } else {
-      // Handle incorrect answer logic
-      // Display a message or take appropriate action for wrong answers
-    }
-  } catch (error) {
-    console.error("Error submitting quiz:", error);
-    res.status(500).send("Error submitting quiz");
-  }
+  // Your existing logic...
 });
+
+module.exports = router;
