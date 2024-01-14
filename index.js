@@ -5,9 +5,14 @@ const path = require('path');
 const quizRoute = require('./routes/quiz');
 
 const quizManager = require('./controllers/quizmanager');
-mongoose.connect('mongodb+srv://daria:123@js.ypw2qg2.mongodb.net/');
+
+require('dotenv').config();
+
 
 const app = express();
+const mongoURI = process.env.MONGO_URI;
+
+mongoose.connect(mongoURI)
 
 app.use('/', homeRoute);
 app.use('/quiz', quizRoute);
