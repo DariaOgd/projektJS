@@ -9,15 +9,15 @@ router.use(bodyParser.json());
 
 router.get('/', async (req, res) => {
     try {
-        const concepts = await Concept.find({}); // Fetch all concepts from the database
-        res.render('home', { concepts }); // Pass fetched concepts to the view
+        const concepts = await Concept.find({}); 
+        res.render('home', { concepts }); 
     } catch (error) {
         console.error("Error fetching concepts:", error);
-        res.render('home', { concepts: [] }); // Render the view with an empty array if an error occurs
+        res.render('home', { concepts: [] }); 
     }
 });
 
-router.post('/add', async (req, res) => { // Make sure this line has async keyword
+router.post('/add', async (req, res) => { 
   const { concept, definition } = req.body;
 
   console.log(concept, definition);
@@ -41,16 +41,16 @@ router.post('/add', async (req, res) => { // Make sure this line has async keywo
 
 router.post("/edit/:id", async (req, res) => {
     try {
-        const { concept, definition } = req.body; // Retrieve updated concept and definition from the form
+        const { concept, definition } = req.body; 
 
         const updatedConcept = await Concept.findOneAndUpdate(
-            { _id: req.params.id }, // condition to find the document
-            { $set: { concept, definition } }, // update to be applied
-            { new: true } // to return the updated document
+            { _id: req.params.id }, 
+            { $set: { concept, definition } }, 
+            { new: true } 
         );
 
         console.log("Updated Concept:", updatedConcept);
-        res.redirect("/"); // Redirect to the home page or any desired route
+        res.redirect("/"); 
     } catch (error) {
         console.error("Error:", error);
         res.send("Error updating concept");
@@ -58,11 +58,11 @@ router.post("/edit/:id", async (req, res) => {
 });
 
 
-// Assuming this is the route for rendering the edit form for a specific concept
+
 router.get("/edit/:id", async (req, res) => {
     try {
         const concept = await Concept.findById(req.params.id);
-        res.render('edit', { concept }); // Render the edit form with the concept details
+        res.render('edit', { concept }); 
     } catch (error) {
         console.error("Error:", error);
         res.send("Error fetching concept for editing");

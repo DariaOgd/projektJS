@@ -6,11 +6,11 @@ const { fetchQuestions } = require('../controllers/quizManager');
 router.get('/', async (req, res) => {
   try {
     const questions = await fetchQuestions();
-    console.log('Received questions:', questions); // Check if questions are fetched correctly
+    console.log('Otrzymane pytania:', questions); 
     res.render('quiz', { questions });
   } catch (error) {
-    console.error("Error fetching questions:", error);
-    res.status(500).send("Error fetching questions");
+    console.error("Nie udało się wczytać pytań:", error);
+    res.status(500).send("Nie udało się wczytać pytań:");
   }
 });
 
