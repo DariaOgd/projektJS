@@ -5,7 +5,7 @@ const path = require('path');
 const quizRoute = require('./routes/quiz');
 
 const quizManager = require('./controllers/quizmanager');
-mongoose.connect('mongodb+srv://daria:123@js.ypw2qg2.mongodb.net/');
+mongoose.connect('mongodb+srv://daria:@js.ypw2qg2.mongodb.net/');
 
 const app = express();
 
